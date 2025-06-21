@@ -15,11 +15,11 @@
         <div class="login-container">
             <!-- BEGIN login-header -->
             <div class="login-header">
-                <div class="brand">
+                <div class="brand pe-2">
                     <div class="d-flex align-items-center">
-                        <span class="logo"></span> <b>Color</b> Admin
+                        <span class="logo"></span> <b>Inventory</b> Management
                     </div>
-                    <small>Bootstrap 5 Responsive Admin Template</small>
+                    {{-- <small>Bootstrap 5 Responsive Admin Template</small> --}}
                 </div>
                 <div class="icon">
                     <i class="fa fa-lock"></i>
@@ -31,15 +31,15 @@
             <div class="login-content">
                 <form action="index.html" method="GET">
                     <div class="form-floating mb-20px">
-                        <input type="text" class="form-control fs-13px h-45px border-0" id="emailAddress"
+                        <input type="text" class="form-control fs-13px h-45px border-0" id="emailAddress" wire:model='input_email'
                             placeholder="Email Address" />
                         <label class="d-flex align-items-center fs-13px text-gray-600" for="emailAddress">Email
                             Address</label>
                     </div>
                     <div class="form-floating mb-20px">
-                        <input type="password" class="form-control fs-13px h-45px border-0" placeholder="Password" />
+                        <input type="password" class="form-control fs-13px h-45px border-0" placeholder="Password" wire:model='password'/>
                         <label class="d-flex align-items-center fs-13px text-gray-600"
-                            for="emailAddress">Password</label>
+                            for="Password">Password</label>
                     </div>
                     <div class="form-check mb-20px">
                         <input type="checkbox" class="form-check-input border-0" id="rememberMe" value="1" />
