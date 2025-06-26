@@ -87,20 +87,20 @@
                 <a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
                     <img src="{{ asset('assets') }}/img/user/user-13.jpg" alt="" />
                     <span>
-                        <span class="d-none d-md-inline">Adam Schwartz</span>
+                        <span class="d-none d-md-inline">{{ Session::get('user_fullname') }}</span>
                         <b class="caret"></b>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end me-1">
-                    <a href="extra_profile.html" class="dropdown-item">Edit Profile</a>
+                    {{-- <a href="extra_profile.html" class="dropdown-item">Edit Profile</a>
                     <a href="email_inbox.html" class="dropdown-item d-flex align-items-center">
                         Inbox
                         <span class="badge bg-danger rounded-pill ms-auto pb-4px">2</span>
                     </a>
                     <a href="calendar.html" class="dropdown-item">Calendar</a>
-                    <a href="extra_settings_page.html" class="dropdown-item">Settings</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="login.html" class="dropdown-item">Log Out</a>
+                    <a href="extra_settings_page.html" class="dropdown-item">Settings</a> --}}
+                    {{-- <div class="dropdown-divider"></div> --}}
+                    <a href="{{ route('auth.logout') }}" class="dropdown-item">Log Out</a>
                 </div>
             </div>
         </div>

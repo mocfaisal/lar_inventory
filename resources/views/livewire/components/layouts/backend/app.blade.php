@@ -17,6 +17,8 @@
     @yield('header.css.code.global')
     @yield('header.css.code.private')
 
+    {{ Vite::useBuildDirectory('build/backend')->withEntryPoints(['resources/js/backend/app.js', 'resources/css/backend/app.css']) }}
+
 </head>
 
 <body>

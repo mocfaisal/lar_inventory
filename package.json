@@ -2,8 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "build": "vite build --config vite.frontend.config.js && vite build --config vite.backend.config.js"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
@@ -15,6 +15,7 @@
         "vite": "^6.0.11"
     },
     "dependencies": {
+        "@davicotico/menu-editor": "^1.2.0",
         "sweetalert2": "^11.22.0"
     }
 }

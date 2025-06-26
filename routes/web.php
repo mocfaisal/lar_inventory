@@ -6,28 +6,40 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'App'], function () {
 
     Route::group(['namespace' => 'Livewire'], function () {
-        // Route::middleware(['auth', 'auth.basic'])->group(function () {
-        Route::group(['namespace' => 'Backend'], function () {
-            Route::prefix('backend')->group(function () {
-                // Route::get('/home', Home::class);
+        Route::middleware(['auth', 'auth.basic'])->group(function () {
+            Route::group(['namespace' => 'Backend'], function () {
+                Route::prefix('backend')->group(function () {
+                    // Route::get('/home', Home::class);
 
-                Route::group(['namespace' => 'Dashboard'], function () {
-                    Route::get('/dashboard', Index::class)->name('backend.dashboard');
-                });
+                    Route::group(['namespace' => 'Dashboard'], function () {
+                        Route::get('/dashboard', Index::class)->name('backend.dashboard.index');
+                    });
 
-                Route::group(['namespace' => 'Master'], function () {
-                    Route::prefix('master')->group(function () {
-                        Route::group(['namespace' => 'Barang'], function () {
-                            Route::prefix('barang')->group(function () {
-                                Route::get('/', Index::class)->name('backend.master.barang.index');
-                                Route::post('/getTable', 'Index@getTable')->name('backend.master.barang.index.data.table');
+                    Route::group(['namespace' => 'Master'], function () {
+                        Route::prefix('master')->group(function () {
+                            Route::group(['namespace' => 'Barang'], function () {
+                                Route::prefix('barang')->group(function () {
+                                    Route::get('/', Index::class)->name('backend.master.barang.index');
+                                    Route::post('/getTable', 'Index@getTable')->name('backend.master.barang.index.data.table');
+                                });
+                            });
+                        });
+                    });
+
+                    Route::namespace('Settings')->group(function () {
+                        Route::prefix('settings')->group(function () {
+                            Route::namespace('Menu')->group(function () {
+                                Route::prefix('menu')->group(function () {
+                                    Route::get('/', Index::class)->name('backend.settings.menu');
+                                    Route::get('/getData', 'Index@getData')->name('backend.settings.menu.getData');
+                                    Route::post('/update', 'Index@update')->name('backend.settings.menu.updateData');
+                                });
                             });
                         });
                     });
                 });
             });
         });
-        // });
 
         Route::group(['namespace' => 'Frontend'], function () {
 
@@ -52,6 +64,8 @@ Route::group(['namespace' => 'App'], function () {
                         //                     });
                         //                 });
                     });
+
+                    Route::get('/logout', 'Login@logout')->name('auth.logout');
                 });
             });
 
@@ -68,5 +82,5 @@ Route::group(['namespace' => 'App'], function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('frontend.auth.login');
 });

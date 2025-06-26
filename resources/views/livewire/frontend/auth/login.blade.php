@@ -29,26 +29,30 @@
 
             <!-- BEGIN login-content -->
             <div class="login-content">
-                <form action="index.html" method="GET">
+                <form>
                     <div class="form-floating mb-20px">
-                        <input type="text" class="form-control fs-13px h-45px border-0" id="emailAddress" wire:model='input_email'
-                            placeholder="Email Address" />
-                        <label class="d-flex align-items-center fs-13px text-gray-600" for="emailAddress">Email
-                            Address</label>
+                        <input type="text" class="form-control fs-13px h-45px border-0" id="email"
+                            placeholder="Email Address" wire:model='input_email' wire:keydown.enter='processLogin' />
+                        <label class="d-flex align-items-center fs-13px text-gray-600" for="email">Email</label>
                     </div>
                     <div class="form-floating mb-20px">
-                        <input type="password" class="form-control fs-13px h-45px border-0" placeholder="Password" wire:model='password'/>
-                        <label class="d-flex align-items-center fs-13px text-gray-600"
-                            for="Password">Password</label>
+                        <input type="password" class="form-control fs-13px h-45px border-0" placeholder="Password"
+                            wire:model='input_password' wire:keydown.enter='processLogin' />
+                        <label class="d-flex align-items-center fs-13px text-gray-600" for="Password">Password</label>
                     </div>
                     <div class="form-check mb-20px">
-                        <input type="checkbox" class="form-check-input border-0" id="rememberMe" value="1" />
+                        <input type="checkbox" class="form-check-input border-0" id="rememberMe" value="1"
+                            wire:model='is_remember' />
                         <label class="form-check-label fs-13px text-gray-500" for="rememberMe">
                             Remember Me
                         </label>
                     </div>
                     <div class="mb-20px">
-                        <button type="submit" class="btn btn-theme d-block w-100 h-45px btn-lg">Sign me in</button>
+                        <x-button.spinner class="btn btn-theme d-block w-100 h-45px btn-lg" wire:click="processLogin"
+                            loading-target="processLogin">
+                            Sign me in
+                        </x-button.spinner>
+
                     </div>
                     {{-- <div class="text-gray-500"> Not a member yet? Click <a class="text-white" href="register_v3.html">here</a> to register. </div> --}}
                 </form>
