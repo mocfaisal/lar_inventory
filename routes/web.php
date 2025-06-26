@@ -14,6 +14,17 @@ Route::group(['namespace' => 'App'], function () {
                 Route::group(['namespace' => 'Dashboard'], function () {
                     Route::get('/dashboard', Index::class)->name('backend.dashboard');
                 });
+
+                Route::group(['namespace' => 'Master'], function () {
+                    Route::prefix('master')->group(function () {
+                        Route::group(['namespace' => 'Barang'], function () {
+                            Route::prefix('barang')->group(function () {
+                                Route::get('/', Index::class)->name('backend.master.barang.index');
+                                Route::post('/getTable', 'Index@getTable')->name('backend.master.barang.index.data.table');
+                            });
+                        });
+                    });
+                });
             });
         });
         // });

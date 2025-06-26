@@ -5,10 +5,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>{{ $title ?? 'Page Title' }}</title>
+    <title>{{ $title ?? 'Inventory' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @yield('header.css.files.global')
     @yield('header.css.files.private')
@@ -71,6 +72,8 @@
 
     @yield('footer.js.files.global')
     @yield('footer.js.files.private')
+    @yield('footer.js.code.global')
+    @yield('footer.js.code.private')
 </body>
 
 </html>
